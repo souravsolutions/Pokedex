@@ -50,7 +50,8 @@ function pokemonType(data){
                p.innerText =  data.types[i].type.name
                addcolor(p);
                type.appendChild(p);
-        }//for loop end
+        }
+        //for loop end
     }else{
         type.innerText = "Unknown";
     }
@@ -91,55 +92,80 @@ function aboutPokemon(data){
 
 
 // add pokemon power color
-function addcolor(p){
-    if(color === "electric"){
-        p.style.backgroundColor = "rgb(250, 192, 0)"
-        health.style.backgroundColor = "rgba(250, 192, 0, 0.46)"
-    }else if(color === "grass"){
-        p.style.backgroundColor = "rgb(62, 161, 40)"
-        health.style.backgroundColor= "rgba(62, 161, 40, 0.51)"
-    }else if(color === "poison"){
-        p.style.backgroundColor = "rgb(146, 65, 204)"
-    }else if(color === "normal"){
-        p.style.backgroundColor = "rgba(159, 161, 159, 0.72)"
-        health.style.backgroundColor= "rgba(159, 161, 159, 0.53)"
-    }else if(color === "water"){
-        p.style.backgroundColor = "rgb(41, 127, 240)"
-        health.style.backgroundColor= "rgba(41, 127, 240, 0.48)"
-    }else if(color === "flying"){
-        p.style.backgroundColor = "rgb(129, 186, 240)"
-    }else if(color === "fairy"){
-        p.style.backgroundColor = "rgb(240, 113, 240)"
-        health.style.backgroundColor= "rgba(240, 113, 240, 0.47)"
-    }else if(color == "bug"){
-        p.style.backgroundColor = "rgb(145, 161, 26)"
-        health.style.backgroundColor= "rgba(145, 161, 26, 0.48)"
-    }else if(color == "fighting"){
-        p.style.backgroundColor = "rgb(255, 128, 0)"
-    }else if(color == "ground"){
-        p.style.backgroundColor = "rgb(145, 82, 33)"
-    }else if(color == "rock"){
-        p.style.backgroundColor = "rgb(176, 170, 130)"
-    }else if(color == "ghost"){
-        p.style.backgroundColor = "rgb(145, 161, 26)"
-        health.style.backgroundColor= "rgba(145, 161, 26, 0.48)"
-    }else if(color == "steel"){
-        p.style.backgroundColor = "rgb(95, 160, 184)"
-    }else if(color == "stellar"){
-        p.style.backgroundColor = "rgb(63, 181, 165)"
-    }else if(color == "fire"){
-        p.style.backgroundColor = "rgb(230, 39, 39)"
-        health.style.backgroundColor= "rgba(230, 39, 39, 0.49)"
-    }else if(color == "psychic"){
-        p.style.backgroundColor = "rgb(240, 65, 120)"
-    }else if(color == "ice"){
-        p.style.backgroundColor = "rgb(61, 206, 242)"
-    }else if(color == "dragon"){
-        p.style.backgroundColor = "rgb(81, 98, 224)"
-    }else if(color == "dark"){
-        p.style.backgroundColor = "rgb(97, 77, 78)"
+function addcolor(p) {
+    let color = p.innerText.toLowerCase();
+    switch (color) {
+        case "electric":
+            p.style.backgroundColor = "rgb(250, 192, 0)";
+            health.style.backgroundColor = "rgba(250, 192, 0, 0.46)";
+            break;
+        case "grass":
+            p.style.backgroundColor = "rgb(62, 161, 40)";
+            health.style.backgroundColor = "rgba(62, 161, 40, 0.51)";
+            break;
+        case "poison":
+            p.style.backgroundColor = "rgb(146, 65, 204)";
+            break;
+        case "normal":
+            p.style.backgroundColor = "rgba(159, 161, 159, 0.72)";
+            health.style.backgroundColor = "rgba(159, 161, 159, 0.53)";
+            break;
+        case "water":
+            p.style.backgroundColor = "rgb(41, 127, 240)";
+            health.style.backgroundColor = "rgba(41, 127, 240, 0.48)";
+            break;
+        case "flying":
+            p.style.backgroundColor = "rgb(129, 186, 240)";
+            break;
+        case "fairy":
+            p.style.backgroundColor = "rgb(240, 113, 240)";
+            health.style.backgroundColor = "rgba(240, 113, 240, 0.47)";
+            break;
+        case "bug":
+            p.style.backgroundColor = "rgb(145, 161, 26)";
+            health.style.backgroundColor = "rgba(145, 161, 26, 0.48)";
+            break;
+        case "fighting":
+            p.style.backgroundColor = "rgb(255, 128, 0)";
+            break;
+        case "ground":
+            p.style.backgroundColor = "rgb(145, 82, 33)";
+            break;
+        case "rock":
+            p.style.backgroundColor = "rgb(176, 170, 130)";
+            break;
+        case "ghost":
+            p.style.backgroundColor = "rgb(145, 161, 26)";
+            health.style.backgroundColor = "rgba(145, 161, 26, 0.48)";
+            break;
+        case "steel":
+            p.style.backgroundColor = "rgb(95, 160, 184)";
+            break;
+        case "stellar":
+            p.style.backgroundColor = "rgb(63, 181, 165)";
+            break;
+        case "fire":
+            p.style.backgroundColor = "rgb(230, 39, 39)";
+            health.style.backgroundColor = "rgba(230, 39, 39, 0.49)";
+            break;
+        case "psychic":
+            p.style.backgroundColor = "rgb(240, 65, 120)";
+            break;
+        case "ice":
+            p.style.backgroundColor = "rgb(61, 206, 242)";
+            break;
+        case "dragon":
+            p.style.backgroundColor = "rgb(81, 98, 224)";
+            break;
+        case "dark":
+            p.style.backgroundColor = "rgb(97, 77, 78)";
+            break;
+        default:
+            p.style.backgroundColor = "gray"; // fallback color
     }
 }
+
+
 
 //random pokemon image generate
 random.addEventListener("click",()=>{
@@ -168,57 +194,79 @@ async function Information(randomNumber,div) {
     cardPokemonType(value,div);
 }
 
+
 function cardPokemonType(data,div){
     if (data.types && data.types.length > 0) {
-        // div.innerHTML = ""
+
         for(let i=0; i<data.types.length; i++){//for loop start
             let span = document.createElement("span");
             span.innerText = `${data.types[i].type.name}`
             div.append(span);
                addcolorSecond(span);
         }//for loop end
+        
     }
 }
 
 function addcolorSecond(p){
-    let color = p.innerText;
-    if(color === "electric"){
-        p.style.backgroundColor = "rgb(250, 192, 0)"
-    }else if(color === "grass"){
-        p.style.backgroundColor = "rgb(62, 161, 40)"
-    }else if(color === "poison"){
-        p.style.backgroundColor = "rgb(146, 65, 204)"
-    }else if(color === "normal"){
-        p.style.backgroundColor = "rgba(159, 161, 159, 0.72)"
-    }else if(color === "water"){
-        p.style.backgroundColor = "rgb(41, 127, 240)"
-    }else if(color === "flying"){
-        p.style.backgroundColor = "rgb(129, 186, 240)"
-    }else if(color === "fairy"){
-        p.style.backgroundColor = "rgb(240, 113, 240)"
-    }else if(color == "bug"){
-        p.style.backgroundColor = "rgb(145, 161, 26)"
-    }else if(color == "fighting"){
-        p.style.backgroundColor = "rgb(255, 128, 0)"
-    }else if(color == "ground"){
-        p.style.backgroundColor = "rgb(145, 82, 33)"
-    }else if(color == "rock"){
-        p.style.backgroundColor = "rgb(176, 170, 130)"
-    }else if(color == "ghost"){
-        p.style.backgroundColor = "rgb(145, 161, 26)"
-    }else if(color == "steel"){
-        p.style.backgroundColor = "rgb(95, 160, 184)"
-    }else if(color == "stellar"){
-        p.style.backgroundColor = "rgb(63, 181, 165)"
-    }else if(color == "fire"){
-        p.style.backgroundColor = "rgb(230, 39, 39)"
-    }else if(color == "psychic"){
-        p.style.backgroundColor = "rgb(240, 65, 120)"
-    }else if(color == "ice"){
-        p.style.backgroundColor = "rgb(61, 206, 242)"
-    }else if(color == "dragon"){
-        p.style.backgroundColor = "rgb(81, 98, 224)"
-    }else if(color == "dark"){
-        p.style.backgroundColor = "rgb(97, 77, 78)"
+    let color = p.innerText.toLowerCase();
+    switch (color) {
+        case "electric":
+            p.style.backgroundColor = "rgb(250, 192, 0)";
+            break;
+        case "grass":
+            p.style.backgroundColor = "rgb(62, 161, 40)";
+            break;
+        case "poison":
+            p.style.backgroundColor = "rgb(146, 65, 204)";
+            break;
+        case "normal":
+            p.style.backgroundColor = "rgba(159, 161, 159, 0.72)";
+            break;
+        case "water":
+            p.style.backgroundColor = "rgb(41, 127, 240)";
+            break;
+        case "flying":
+            p.style.backgroundColor = "rgb(129, 186, 240)";
+            break;
+        case "fairy":
+            p.style.backgroundColor = "rgb(240, 113, 240)";
+            break;
+        case "bug":
+            p.style.backgroundColor = "rgb(145, 161, 26)";
+            break;
+        case "fighting":
+            p.style.backgroundColor = "rgb(255, 128, 0)";
+            break;
+        case "ground":
+            p.style.backgroundColor = "rgb(145, 82, 33)";
+            break;
+        case "rock":
+            p.style.backgroundColor = "rgb(176, 170, 130)";
+            break;
+        case "ghost":
+            p.style.backgroundColor = "rgb(145, 161, 26)";
+            break;
+        case "steel":
+            p.style.backgroundColor = "rgb(95, 160, 184)";
+            break;
+        case "stellar":
+            p.style.backgroundColor = "rgb(63, 181, 165)";
+            break;
+        case "fire":
+            p.style.backgroundColor = "rgb(230, 39, 39)";
+            break;
+        case "psychic":
+            p.style.backgroundColor = "rgb(240, 65, 120)";
+            break;
+        case "ice":
+            p.style.backgroundColor = "rgb(61, 206, 242)";
+            break;
+        case "dragon":
+            p.style.backgroundColor = "rgb(81, 98, 224)";
+            break;
+        case "dark":
+            p.style.backgroundColor = "rgb(97, 77, 78)";
+            break;
     }
 }
